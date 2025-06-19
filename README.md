@@ -11,6 +11,7 @@
 - [Pruebas y Seguridad](#pruebas-y-seguridad)
 - [Futuras Implementaciones](#futuras-implementaciones)
 - [Referencias](#referencias)
+- [Diapositivas utilizadas durante la exposición](#diapositivas-utilizadas-durante-la-exposición)
 - [Para probar el proyecto](#para-probar-el-proyecto)
 
 ## Visión General
@@ -110,6 +111,10 @@ contract UniversityDegree is ERC721, Ownable {
 4. W3C Verifiable Credentials Data Model  
 5. Caso de éxito: Instituto Tecnológico de Monterrey (México)  
 6. Implementación OpenCerts (Singapur)
+
+## Diapositivas utilizadas durante la exposición
+Para acceder al ppt haga click en el siguiente enlace: 
+https://gamma.app/docs/Implementacion-de-un-Sistema-de-Emision-y-Verificacion-de-Titulos-p2dk7lx3unnjqn0
 
 ## Para probar el proyecto
 En una primera terminal
