@@ -96,7 +96,7 @@ contract UniversityDegree is ERC721, Ownable {
 - 🌎 Posicionamiento de Cuba como pionero en transformación digital educativa
 
 ## Futuras Implementaciones
-- 🚀 Piloto en **Universidad de La Habana** (2025)
+- 🚀 Piloto en **Universidad de La Habana**
 - 🔗 Integración con **plataforma nacional de legalización**
 - 🌍 Adaptación a **estándares W3C Verifiable Credentials**
 - 🧩 Tokenización de **habilidades específicas** (e.g., "Machine Learning")
