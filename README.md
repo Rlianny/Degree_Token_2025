@@ -1,128 +1,139 @@
-# Tokenización de Títulos Universitarios en Blockchain ⛓️🎓
+# University Degree Tokenization on the Blockchain ⛓️🎓
 
 ![Banner](./assets/Banner.png)
 
-## Tabla de Contenidos
-- [Visión General](#visión-general)
-- [Problemática](#problemática)
-- [Solución Técnica](#solución-técnica)
-- [Tecnologías Implementadas](#tecnologías-implementadas)
-- [Características Clave](#características-clave)
-- [Pruebas y Seguridad](#pruebas-y-seguridad)
-- [Futuras Implementaciones](#futuras-implementaciones)
-- [Referencias](#referencias)
-- [Diapositivas utilizadas durante la exposición](#diapositivas-utilizadas-durante-la-exposición)
-- [Para probar el proyecto](#para-probar-el-proyecto)
+## Table of Contents
 
-## Visión General
-Sistema basado en blockchain para tokenización de títulos universitarios mediante NFTs no transferibles. Utiliza Hardhat y contratos inteligentes en Solidity 0.8.20 con estándares OpenZeppelin para garantizar:
+  - [Overview](https://www.google.com/search?q=%23overview)
+  - [The Problem](https://www.google.com/search?q=%23the-problem)
+  - [Technical Solution](https://www.google.com/search?q=%23technical-solution)
+  - [Tech Stack](https://www.google.com/search?q=%23tech-stack)
+  - [Key Features](https://www.google.com/search?q=%23key-features)
+  - [Testing and Security](https://www.google.com/search?q=%23testing-and-security)
+  - [Roadmap](https://www.google.com/search?q=%23roadmap)
+  - [References](https://www.google.com/search?q=%23references)
+  - [Presentation Slides](https://www.google.com/search?q=%23presentation-slides)
+  - [Getting Started & Running Tests](https://www.google.com/search?q=%23getting-started--running-tests)
 
-✅ Autenticidad de credenciales académicas  
-✅ Prevención de falsificaciones  
-✅ Verificación internacional en segundos  
-✅ Eliminación de trámites burocráticos  
+## Overview
 
-## Problemática
-- **800+ universidades fantasma** operan globalmente (UNESCO, 2024)
-- **30% de títulos alterados** en procesos de contratación en Latinoamérica (BID, 2024)
-- **Cuba requiere 60 días hábiles** y 4 instancias para legalización
-- Costos superiores a **10,000 CUP** por documento
+This project introduces a blockchain-based system for tokenizing university degrees as non-transferable NFTs. It uses Hardhat and smart contracts written in Solidity 0.8.20 with OpenZeppelin standards to ensure:
 
-## Solución Técnica
-### Pilares Tecnológicos
-1. **NFTs No Transferibles**  
-   - Representación digital única e inmutable de títulos
-2. **Hashes Criptográficos (SHA-3/Keccak256)**  
-   - Almacenamiento seguro que garantiza integridad y privacidad
-3. **Contratos Inteligentes**  
-   - Lógica de emisión, verificación y revocación sin intermediarios
+✅ **Authenticity** of academic credentials
+✅ **Prevention** of forgery
+✅ **Global verification** in seconds
+✅ **Elimination** of bureaucratic processes
 
-### Arquitectura del Contrato
+## The Problem
+
+  - **800+ diploma mills** operate globally (UNESCO, 2024)
+  - **30% of degrees are altered** in Latin American hiring processes (IDB, 2024)
+  - **Cuba requires 60 business days** and 4 different entities for degree legalization
+  - Costs can exceed **10,000 CUP** per document
+
+## Technical Solution
+
+### Technological Pillars
+
+1.  **Non-Transferable NFTs**
+      - A unique and immutable digital representation of a degree.
+2.  **Cryptographic Hashes (SHA-3/Keccak256)**
+      - Secure storage that guarantees data integrity and privacy.
+3.  **Smart Contracts**
+      - Manages the issuance, verification, and revocation logic without intermediaries.
+
+### Contract Architecture
+
 ```solidity
 contract UniversityDegree is ERC721, Ownable {
     struct Degree {
-        bytes32 dataHash;   // Hash de los datos del titulo
-        bool revoked;       // Estado de revocacion
+        bytes32 dataHash;   // Hash of the degree's data
+        bool revoked;       // Revocation status
     }
 
-    mapping(uint256 => Degree) private _degrees;    // Almacenamiento de titulos
-    uint256 private _nextTokenId;                   // Contador de IDs
-
-    event DegreeIssued(uint256 indexed tokenId, address indexed graduate);
-    event DegreeRevoked(uint256 indexed tokenId);contract UniversityDegree is ERC721, Ownable {
-    struct Degree {
-        bytes32 dataHash;   // Hash de los datos del titulo
-        bool revoked;       // Estado de revocacion
-    }
-
-    mapping(uint256 => Degree) private _degrees;    // Almacenamiento de titulos
-    uint256 private _nextTokenId;                   // Contador de IDs
+    mapping(uint256 => Degree) private _degrees; // Degree storage
+    uint256 private _nextTokenId;                // ID counter
 
     event DegreeIssued(uint256 indexed tokenId, address indexed graduate);
     event DegreeRevoked(uint256 indexed tokenId);
 
-  // El  contrato cccontinua
+  // ... contract continues
+}
 ```
-## Tecnologías Implementadas
 
-| Componente          | Tecnología                     |
+## Tech Stack
+
+| Component           | Technology                     |
 |---------------------|--------------------------------|
-| Entorno Desarrollo  | Hardhat Network               |
-| Lenguaje Contratos  | Solidity 0.8.20               |
-| Estándares          | OpenZeppelin ERC721, Ownable  |
-| Algoritmo Hash      | SHA-3 (Keccak256)             |
-| Pruebas             | Cubrimiento 100% + casos maliciosos |
+| Development Env     | Hardhat Network                |
+| Smart Contracts     | Solidity 0.8.20                |
+| Standards           | OpenZeppelin ERC721, Ownable   |
+| Hashing Algorithm   | SHA-3 (Keccak256)              |
+| Testing             | 100% coverage + malicious cases |
 
-## Características Clave
-- ⚡ **Verificación en segundos** (vs 60 días tradicionales)
-- 🔒 **Títulos "pegajosos"** (no transferibles ni comercializables)
-- 🛡️ **Revocación permanente** por la universidad
-- 🌐 **Alineado con estándares globales** (W3C Verifiable Credentials)
-- 📉 **Costo operativo reducido** en un 40% (caso Tec de Monterrey)
-- 🔐 **Verificación sin exponer datos** (similar Zero-Knowledge Proofs)
+## Key Features
 
-## Pruebas y Seguridad
-- ✅ Cobertura al **100%** de funcionalidades
-- ✅ Escenarios maliciosos y ataques simulados
-- ✅ Pruebas de ingeniería inversa
-- ✅ Protección contra:
-  - Alteración mínima de datos (efecto avalancha)
-  - Transferencia no autorizada
-  - Revocación ilegítima
+  - ⚡ **Verification in Seconds**: Down from the traditional 60 days.
+  - 🔒 **Non-Transferable & Non-Marketable**: Tokens are soul-bound to the graduate.
+  - 🛡️ **Permanent Revocation**: The university can permanently revoke a degree if necessary.
+  - 🌐 **Global Standards Alignment**: In line with W3C Verifiable Credentials.
+  - 📉 **Reduced Operational Costs**: By up to 40% (based on the Tec de Monterrey case).
+  - 🔐 **Data-less Verification**: Verify credentials without exposing personal data (similar to Zero-Knowledge Proofs).
 
- ## Beneficios
-- ❌ Eliminación de 4 pasos burocráticos
-- 💰 Ahorro de >10,000 CUP por título
-- 🚀 Reducción de 60 días a segundos en verificación
-- 🌎 Posicionamiento de Cuba como pionero en transformación digital educativa
+## Testing and Security
 
-## Futuras Implementaciones
-- 🚀 Piloto en **Universidad de La Habana**
-- 🔗 Integración con **plataforma nacional de legalización**
-- 🌍 Adaptación a **estándares W3C Verifiable Credentials**
-- 🧩 Tokenización de **habilidades específicas** (e.g., "Machine Learning")
-- 🤝 Interoperabilidad con **28 países UE** (proyecto ESBI)
-- 📜 Vinculación con **identidades descentralizadas (DID)**
+  - ✅ **100% test coverage** of all functionalities.
+  - ✅ Simulation of malicious scenarios and common attacks.
+  - ✅ Reverse engineering tests.
+  - ✅ Protection against:
+      - Minimal data alteration (avalanche effect).
+      - Unauthorized transfers.
+      - Illegitimate revocation attempts.
 
-## Referencias
-1. BID (2024). Reporte sobre alteraciones en títulos universitarios en América Latina  
-2. UNESCO (2024). Estudio global sobre universidades fantasma y pérdidas económicas  
-3. NIST (2025). SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions  
-4. W3C Verifiable Credentials Data Model  
-5. Caso de éxito: Instituto Tecnológico de Monterrey (México)  
-6. Implementación OpenCerts (Singapur)
+## Benefits
 
-## Diapositivas utilizadas durante la exposición
-Para acceder al ppt haga click en el siguiente enlace: 
-https://gamma.app/docs/Implementacion-de-un-Sistema-de-Emision-y-Verificacion-de-Titulos-p2dk7lx3unnjqn0
+  - ❌ **Eliminates 4 bureaucratic steps**.
+  - 💰 **Saves \>10,000 CUP** per degree.
+  - 🚀 **Reduces verification time** from 60 days to seconds.
+  - 🌎 **Positions Cuba as a pioneer** in digital transformation for education.
 
-## Para probar el proyecto
-En una primera terminal
+## Roadmap
+
+  - 🚀 Pilot program at the **University of Havana**.
+  - 🔗 Integration with the **national legalization platform**.
+  - 🌍 Full adaptation to **W3C Verifiable Credentials** standards.
+  - 🧩 Tokenization of **specific skills** (e.g., "Machine Learning" certificate).
+  - 🤝 Interoperability with **28 EU countries** (ESBI project).
+  - 📜 Linkage with **Decentralized Identities (DID)**.
+
+## References
+
+1.  IDB (2024). Report on alterations in university degrees in Latin America.
+2.  UNESCO (2024). Global study on diploma mills and economic losses.
+3.  NIST (2025). SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions.
+4.  W3C Verifiable Credentials Data Model.
+5.  Success Story: Instituto Tecnológico de Monterrey (Mexico).
+6.  OpenCerts Implementation (Singapore).
+
+## Presentation Slides
+
+The slides used during the project presentation can be accessed here:
+[Implementation of a Degree Issuance and Verification System](https://gamma.app/docs/Implementacion-de-un-Sistema-de-Emision-y-Verificacion-de-Titulos-p2dk7lx3unnjqn0)
+
+## Getting Started & Running Tests
+
+First, in one terminal, run the local Hardhat node:
+
 ```shell
 npx hardhat node
 ```
-En otra terminal
+
+Then, in another terminal, run the tests:
+
 ```shell
+# To test against the local hardhat network
 npx hardhat test --network hardhat
+
+# To run the standard test suite
 npx hardhat test
 ```
